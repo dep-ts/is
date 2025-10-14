@@ -2,6 +2,7 @@
   "name": "@dep/is",
   "version": "1.0.0",
   "description": "A lightweight runtime type guard library for JavaScript & TypeScript",
+  "exports": "./src/main.ts",
   "author": {
     "name": "Estarlin R.",
     "email": "dev@estarlincito.com",
@@ -27,7 +28,6 @@
     "array"
   ],
   "license": "MIT",
-  "exports": "./src/main.ts",
   "publish": {
     "include": ["src", "LICENSE", "README.md"],
     "exclude": ["**/tests/**"]

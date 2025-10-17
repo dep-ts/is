@@ -22,7 +22,7 @@
 
 - **Deno**:
   ```typescript
-  import { isArray, isString, typeOf } from 'jsr:@dep/is';
+  import { is } from 'jsr:@dep/is';
   ```
 - **Node.js (18+) or Browsers**:
   Use JSR's Node.js compatibility layer:
@@ -34,10 +34,8 @@
   Then import as an ES module:
 
   ```typescript
-  import { isArray, isString, typeOf } from '@dep/is';
+  import { is } from '@dep/is';
   ```
-
-**Note**: The `isResponse` function requires the `Response` class, available in Deno, modern browsers, and Node.js 18+. It may not work in older Node.js versions.
 
 ---
 
@@ -50,54 +48,57 @@
 #### Basic Type Checks
 
 ```typescript
-import { isString, isNumber, isArray, isObject } from 'jsr:@dep/is';
+import { is } from 'jsr:@dep/is';
 
-console.log(isString('hello')); // true
-console.log(isString(123)); // false
-console.log(isNumber(42)); // true
-console.log(isNumber(NaN)); // false
-console.log(isArray([1, 2, 3])); // true
-console.log(isArray({})); // false
-console.log(isObject({ key: 'value' })); // true
-console.log(isObject(null)); // false
+const isDate = is.custom((data) => data instanceof Date);
+
+console.log(isDate(new Date())); // true
+console.log(is.string('hello')); // true
+console.log(is.string(123)); // false
+console.log(is.number(42)); // true
+console.log(is.number(NaN)); // false
+console.log(is.array([1, 2, 3])); // true
+console.log(is.array({})); // false
+console.log(is.object({ key: 'value' })); // true
+console.log(is.object(null)); // false
 ```
 
 #### Advanced Type Checks
 
 ```typescript
-import { isPromise, isMap, isDate, isResponse } from 'jsr:@dep/is';
+import { is } from 'jsr:@dep/is';
 
 const promise = Promise.resolve('data');
-console.log(isPromise(promise)); // true
-console.log(isPromise({ then: () => {} })); // false (not a valid thenable)
+console.log(is.promise(promise)); // true
+console.log(is.promise({ then: () => {} })); // false (not a valid thenable)
 
 const map = new Map();
-console.log(isMap(map)); // true
-console.log(isMap(new Set())); // false
+console.log(is.map(map)); // true
+console.log(is.map(new Set())); // false
 
 const date = new Date();
-console.log(isDate(date)); // true
-console.log(isDate('2023-01-01')); // false
+console.log(is.date(date)); // true
+console.log(is.date('2023-01-01')); // false
 
 const response = new Response();
-console.log(isResponse(response)); // true
-console.log(isResponse({})); // false
+console.log(is.response(response)); // true
+console.log(is.response({})); // false
 ```
 
 #### Utility Functions
 
 ```typescript
-import { isEmpty, isFalsy, isTruthy, typeOf } from 'jsr:@dep/is';
+import { is } from 'jsr:@dep/is';
 
-console.log(isEmpty('')); // true
-console.log(isEmpty({})); // true
-console.log(isEmpty([1, 2])); // false
+console.log(is.empty('')); // true
+console.log(is.empty({})); // true
+console.log(is.empty([1, 2])); // false
 
-console.log(isFalsy(0)); // true
-console.log(isFalsy('hello')); // false
+console.log(is.falsy(0)); // true
+console.log(is.falsy('hello')); // false
 
-console.log(isTruthy({})); // true
-console.log(isTruthy(null)); // false
+console.log(is.truthy({})); // true
+console.log(is.truthy(null)); // false
 
 console.log(typeOf(42)); // 'number'
 console.log(typeOf(NaN)); // 'NaN'
@@ -108,14 +109,14 @@ console.log(typeOf(undefined)); // 'undefined'
 #### Type Narrowing in TypeScript
 
 ```typescript
-import { isString, isNumber } from 'jsr:@dep/is';
+import { is } from 'jsr:@dep/is';
 
 function processValue(value: unknown): string {
-  if (isString(value)) {
+  if (is.string(value)) {
     // TypeScript knows `value` is a string
     return value.toUpperCase();
   }
-  if (isNumber(value)) {
+  if (is.number(value)) {
     // TypeScript knows `value` is a number
     return value.toFixed(2);
   }

@@ -1,7 +1,11 @@
-import { isFunction } from './function.ts';
-import { isObject } from './object.ts';
+import { _function } from './function.ts';
+import { object } from './object.ts';
 
-/** Checks if data is a Promise (instance or thenable) */
-export const isPromise = (data: unknown): data is Promise<unknown> =>
+/**
+ * Checks if data is a Promise (instance or thenable)
+ * @param data - The value to check
+ * @returns `true` if data is a Promise or thenable
+ */
+export const promise = (data: unknown): data is Promise<unknown> =>
   data instanceof Promise ||
-  (isObject(data) && isFunction(data.then) && isFunction(data.catch));
+  (object(data) && _function(data.then) && _function(data.catch));

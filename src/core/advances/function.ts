@@ -1,4 +1,15 @@
-/** Checks if data is a function */
-// deno-lint-ignore ban-types
-export const _function = (data: unknown): data is Function =>
-  typeof data === 'function';
+/**
+ * Type guard that checks if a value is a function.
+ *
+ * @param value - The value to check
+ * @returns `true` if the value is a function, `false` otherwise
+ * @example
+ *   if (is.function(maybe)) {
+ *     // `maybe` is now narrowed to a function
+ *     maybe(); // safe to call
+ *   }
+ */
+const function_ = (value: unknown): value is (...args: unknown[]) => unknown =>
+  typeof value === 'function';
+
+export { function_ as function };

@@ -1,3 +1,13 @@
-/** Checks if data is a Response object */
-export const response = (data: unknown): data is Response =>
-  data instanceof Response;
+/**
+ * Type guard that checks whether a value is a `Response` instance.
+ *
+ * @param value - The value to check
+ * @returns `true` if the value is a Response, `false` otherwise
+ * @example
+ *   if (is.response(res)) {
+ *     // `res` is now a Response
+ *     console.log(res.status);
+ *   }
+ */
+export const response = (value: unknown): value is Response =>
+  value instanceof Response;

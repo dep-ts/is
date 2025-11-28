@@ -1,72 +1,82 @@
-import { array } from '@/core/advances/array.ts';
-import { date } from '@/core/advances/date.ts';
-import { url } from '@/core/advances/url.ts';
-import { error } from '@/core/advances/error.ts';
-import { _function } from '@/core/advances/function.ts';
-import { map } from '@/core/advances/map.ts';
-import { object } from '@/core/advances/object.ts';
-import { promise } from '@/core/advances/promise.ts';
-import { regExp } from '@/core/advances/regexp.ts';
-import { response } from '@/core/advances/response.ts';
-import { set } from '@/core/advances/set.ts';
-import { bigint } from '@/core/primitives/bigint.ts';
-import { boolean } from '@/core/primitives/boolean.ts';
-import { nan } from '@/core/primitives/nan.ts';
-import { _null } from '@/core/primitives/null.ts';
-import { number } from '@/core/primitives/number.ts';
-import { string } from '@/core/primitives/string.ts';
-import { symbol } from '@/core/primitives/symbol.ts';
-import { _undefined } from '@/core/primitives/undefined.ts';
+import * as primitives from '@/core/primitives/mod.ts';
+import * as advances from '@/core/advances/mod.ts';
 
+/**
+ * Union of all possible type identifiers returned by `typeOf()`.
+ */
 export type TypeOf =
-  | 'NaN'
   | 'string'
   | 'boolean'
   | 'number'
   | 'bigint'
   | 'symbol'
   | 'undefined'
+  | 'nan'
+  | 'finite'
+  | 'integer'
+  | 'null'
+  | 'object'
+  | 'record'
+  | 'function'
+  | 'array'
   | 'set'
   | 'map'
-  | 'url'
   | 'date'
-  | 'null'
-  | 'array'
-  | 'object'
-  | 'function'
-  | 'error'
-  | 'promise'
   | 'regexp'
+  | 'promise'
+  | 'error'
+  | 'url'
+  | 'blob'
+  | 'file'
+  | 'arraybuffer'
+  | 'dataview'
   | 'response'
-  | 'unknown';
+  | 'request'
+  | 'headers'
+  | 'formdata'
+  | 'websocket';
 
 /**
- * Enhanced typeof that returns specific type names
- * Distinguishes between array, null, date, promise, and other complex types
- * @returns One of: 'string', 'number', 'boolean', 'bigint', 'symbol',
- *          'undefined', 'null', 'array', 'object', 'function', 'date',
- *          'set', 'map', 'promise', 'regexp', 'error', 'response', 'NaN'
+ * Determines the specific runtime type of a value.
+ *
+ * Returns a string literal describing the value’s category, covering both
+ * primitive types and advanced/built-in objects.
+ *
+ * @param value - The value to inspect
+ * @returns A string literal representing the detected type
+ * @example
+ *   const kind = is.typeOf(x);
+ *   // kind might be "string", "array", "date", "map", etc.
  */
-export const typeOf = (data: unknown): TypeOf => {
-  if (nan(data)) return 'NaN';
-  if (string(data)) return 'string';
-  if (boolean(data)) return 'boolean';
-  if (number(data)) return 'number';
-  if (bigint(data)) return 'bigint';
-  if (symbol(data)) return 'symbol';
-  if (_undefined(data)) return 'undefined';
-  if (set(data)) return 'set';
-  if (map(data)) return 'map';
-  if (url(data)) return 'url';
-  if (date(data)) return 'date';
-  if (_null(data)) return 'null';
-  if (array(data)) return 'array';
-  if (object(data)) return 'object';
-  if (_function(data)) return 'function';
-  if (error(data)) return 'error';
-  if (promise(data)) return 'promise';
-  if (regExp(data)) return 'regexp';
-  if (response(data)) return 'response';
+export const typeOf = (value: unknown): TypeOf => {
+  if (primitives.null(value)) return 'null';
+  if (primitives.nan(value)) return 'nan';
+  if (primitives.string(value)) return 'string';
+  if (primitives.boolean(value)) return 'boolean';
+  if (primitives.bigint(value)) return 'bigint';
+  if (primitives.number(value)) return 'number';
+  if (primitives.symbol(value)) return 'symbol';
+  if (primitives.undefined(value)) return 'undefined';
+  if (advances.record(value)) return 'record';
+  if (advances.array(value)) return 'array';
+  if (advances.arrayBuffer(value)) return 'arraybuffer';
+  if (advances.date(value)) return 'date';
+  if (advances.dataView(value)) return 'dataview';
+  if (advances.error(value)) return 'error';
+  if (advances.blob(value)) return 'blob';
+  if (advances.file(value)) return 'file';
+  if (advances.function(value)) return 'function';
+  if (advances.url(value)) return 'url';
+  if (advances.map(value)) return 'map';
+  if (advances.set(value)) return 'set';
+  if (advances.regExp(value)) return 'regexp';
+  if (advances.promise(value)) return 'promise';
+  if (advances.response(value)) return 'response';
+  if (advances.request(value)) return 'request';
+  if (advances.headers(value)) return 'headers';
+  if (advances.formData(value)) return 'formdata';
+  if (advances.webSocket(value)) return 'websocket';
+  if (advances.object(value)) return 'object'; // must be in the last position
 
-  return 'unknown';
+  return 'object';
 };

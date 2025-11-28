@@ -59,7 +59,7 @@ console.log(is.number(42)); // true
 console.log(is.number(NaN)); // false
 console.log(is.array([1, 2, 3])); // true
 console.log(is.array({})); // false
-console.log(is.object({ key: 'value' })); // true
+console.log(is.record({ key: 'value' })); // true
 console.log(is.object(null)); // false
 ```
 
@@ -104,24 +104,6 @@ console.log(typeOf(42)); // 'number'
 console.log(typeOf(NaN)); // 'NaN'
 console.log(typeOf(new Map())); // 'map'
 console.log(typeOf(undefined)); // 'undefined'
-```
-
-#### Type Narrowing in TypeScript
-
-```typescript
-import { is } from 'jsr:@dep/is';
-
-function processValue(value: unknown): string {
-  if (is.string(value)) {
-    // TypeScript knows `value` is a string
-    return value.toUpperCase();
-  }
-  if (is.number(value)) {
-    // TypeScript knows `value` is a number
-    return value.toFixed(2);
-  }
-  throw new Error('Invalid value');
-}
 ```
 
 ---

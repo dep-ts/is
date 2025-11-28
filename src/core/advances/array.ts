@@ -1,2 +1,15 @@
-/** Checks if data is an array */
-export const array = (data: unknown): data is unknown[] => Array.isArray(data);
+/**
+ * Type guard that checks if a value is an array (any array).
+ *
+ * Narrows the type to `unknown[]`.
+ *
+ * @param value - The value to check
+ * @returns `true` if the value is an array, `false` otherwise
+ * @example
+ *   if (is.array(maybe)) {
+ *     // `maybe` is now narrowed to `unknown[]`
+ *     console.log(maybe.length);
+ *   }
+ */
+export const array = (value: unknown): value is unknown[] =>
+  Array.isArray(value);

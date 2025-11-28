@@ -1,11 +1,12 @@
-import { _function } from './function.ts';
-import { object } from './object.ts';
-
 /**
- * Checks if data is a Promise (instance or thenable)
- * @param data - The value to check
- * @returns `true` if data is a Promise or thenable
+ * Type guard that checks if a value is a Promise.
+ *
+ * @param value - The value to check
+ * @returns `true` if the value is a `Promise`, `false` otherwise
+ * @example
+ *   if (is.promise(maybe)) {
+ *     await maybe; // TypeScript knows it's a Promise
+ *   }
  */
-export const promise = (data: unknown): data is Promise<unknown> =>
-  data instanceof Promise ||
-  (object(data) && _function(data.then) && _function(data.catch));
+export const promise = (value: unknown): value is Promise<unknown> =>
+  value instanceof Promise;

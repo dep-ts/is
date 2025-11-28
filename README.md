@@ -45,22 +45,21 @@
 
 `@dep/is` provides a collection of type guard functions to check the type of values at runtime, along with utility functions for common checks. Below are some examples:
 
-#### Basic Type Checks
+#### Primitive Type Checks
 
 ```typescript
 import { is } from 'jsr:@dep/is';
 
-const isDate = is.custom((data) => data instanceof Date);
-
-console.log(isDate(new Date())); // true
-console.log(is.string('hello')); // true
-console.log(is.string(123)); // false
+console.log(is.bigint(10n)); // true
+console.log(is.boolean(true)); // true
+console.log(is.nan(NaN)); // true
+console.log(is.null(null)); // true
 console.log(is.number(42)); // true
+console.log(is.number(Infinity)); // false
 console.log(is.number(NaN)); // false
-console.log(is.array([1, 2, 3])); // true
-console.log(is.array({})); // false
-console.log(is.record({ key: 'value' })); // true
-console.log(is.object(null)); // false
+console.log(is.string('hola')); // true
+console.log(is.symbol(Symbol('x'))); // true
+console.log(is.undefined(undefined)); // true
 ```
 
 #### Advanced Type Checks
@@ -68,21 +67,28 @@ console.log(is.object(null)); // false
 ```typescript
 import { is } from 'jsr:@dep/is';
 
-const promise = Promise.resolve('data');
-console.log(is.promise(promise)); // true
-console.log(is.promise({ then: () => {} })); // false (not a valid thenable)
-
-const map = new Map();
-console.log(is.map(map)); // true
-console.log(is.map(new Set())); // false
-
-const date = new Date();
-console.log(is.date(date)); // true
-console.log(is.date('2023-01-01')); // false
-
-const response = new Response();
-console.log(is.response(response)); // true
-console.log(is.response({})); // false
+console.log(is.array([1, 2, 3])); // true
+console.log(is.blob(new Blob(['hola']))); // true
+console.log(is.arrayBuffer(new ArrayBuffer(16))); // true
+console.log(is.dataView(new DataView(new ArrayBuffer(8)))); // true
+console.log(is.date(new Date())); // true
+console.log(is.error(new Error('boom'))); // true
+console.log(is.file(new File(['abc'], 'x.txt'))); // true
+console.log(is.formData(new FormData())); // true
+console.log(is.function(() => 'hey')); // true
+console.log(is.headers(new Headers({ 'x-test': '1' }))); // true
+console.log(is.map(new Map([['a', 1]]))); // true
+console.log(is.object({})); // true
+console.log(is.record({ a: 1 })); // true
+console.log(is.promise(Promise.resolve())); // true
+console.log(is.promiseLike(Promise.resolve())); // true
+console.log(is.thenable({ then: () => {} })); // true
+console.log(is.regExp(/x/)); // true
+console.log(is.request(new Request('/'))); // true
+console.log(is.response(new Response())); // true
+console.log(is.set(new Set())); // true
+console.log(is.url(new URL('https://example.com'))); // true
+console.log(is.webSocket(new WebSocket('wss://echo.websocket.org'))); // true
 ```
 
 #### Utility Functions
@@ -90,20 +96,16 @@ console.log(is.response({})); // false
 ```typescript
 import { is } from 'jsr:@dep/is';
 
-console.log(is.empty('')); // true
-console.log(is.empty({})); // true
-console.log(is.empty([1, 2])); // false
+console.log(is.primitive('hola')); // true
+console.log(is.primitive([])); // false
 
-console.log(is.falsy(0)); // true
-console.log(is.falsy('hello')); // false
+console.log(is.advance([])); // true
+console.log(is.advance('hola')); // false
 
-console.log(is.truthy({})); // true
-console.log(is.truthy(null)); // false
-
-console.log(typeOf(42)); // 'number'
-console.log(typeOf(NaN)); // 'NaN'
-console.log(typeOf(new Map())); // 'map'
-console.log(typeOf(undefined)); // 'undefined'
+console.log(is.typeOf(42)); // 'number'
+console.log(is.typeOf(NaN)); // 'NaN'
+console.log(is.typeOf(new Map())); // 'map'
+console.log(is.typeOf(undefined)); // 'undefined'
 ```
 
 ---

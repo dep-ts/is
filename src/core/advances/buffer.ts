@@ -1,3 +1,5 @@
+import { TypeOf } from '@/core/utilities/types.ts';
+
 /**
  * Type guard that checks if a value is an instance of `ArrayBuffer`.
  *
@@ -9,5 +11,5 @@
  *     console.log(maybe.byteLength);
  *   }
  */
-export const arrayBuffer = (value: unknown): value is ArrayBuffer =>
+export const arrayBuffer = (value: unknown): value is TypeOf<'arraybuffer'> =>
   value instanceof ArrayBuffer;

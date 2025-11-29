@@ -1,3 +1,5 @@
+import { TypeOf } from '@/core/utilities/types.ts';
+
 /**
  * Type guard that checks if a value is an instance of `Set`.
  *
@@ -9,5 +11,5 @@
  *     console.log(maybe.size);
  *   }
  */
-export const set = (value: unknown): value is Set<unknown> =>
+export const set = (value: unknown): value is TypeOf<'set'> =>
   value instanceof Set;

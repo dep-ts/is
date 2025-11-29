@@ -1,40 +1,5 @@
-import * as primitives from '@/core/primitives/mod.ts';
-import * as advances from '@/core/advances/mod.ts';
-
-/**
- * Union of all possible type identifiers returned by `typeOf()`.
- */
-export type TypeOf =
-  | 'string'
-  | 'boolean'
-  | 'number'
-  | 'bigint'
-  | 'symbol'
-  | 'undefined'
-  | 'nan'
-  | 'finite'
-  | 'integer'
-  | 'null'
-  | 'object'
-  | 'record'
-  | 'function'
-  | 'array'
-  | 'set'
-  | 'map'
-  | 'date'
-  | 'regexp'
-  | 'promise'
-  | 'error'
-  | 'url'
-  | 'blob'
-  | 'file'
-  | 'arraybuffer'
-  | 'dataview'
-  | 'response'
-  | 'request'
-  | 'headers'
-  | 'formdata'
-  | 'websocket';
+import * as checkers from './checkers.ts';
+import { TypeName } from './types.ts';
 
 /**
  * Determines the specific runtime type of a value.
@@ -48,35 +13,36 @@ export type TypeOf =
  *   const kind = is.typeOf(x);
  *   // kind might be "string", "array", "date", "map", etc.
  */
-export const typeOf = (value: unknown): TypeOf => {
-  if (primitives.null(value)) return 'null';
-  if (primitives.nan(value)) return 'nan';
-  if (primitives.string(value)) return 'string';
-  if (primitives.boolean(value)) return 'boolean';
-  if (primitives.bigint(value)) return 'bigint';
-  if (primitives.number(value)) return 'number';
-  if (primitives.symbol(value)) return 'symbol';
-  if (primitives.undefined(value)) return 'undefined';
-  if (advances.record(value)) return 'record';
-  if (advances.array(value)) return 'array';
-  if (advances.arrayBuffer(value)) return 'arraybuffer';
-  if (advances.date(value)) return 'date';
-  if (advances.dataView(value)) return 'dataview';
-  if (advances.error(value)) return 'error';
-  if (advances.blob(value)) return 'blob';
-  if (advances.file(value)) return 'file';
-  if (advances.function(value)) return 'function';
-  if (advances.url(value)) return 'url';
-  if (advances.map(value)) return 'map';
-  if (advances.set(value)) return 'set';
-  if (advances.regExp(value)) return 'regexp';
-  if (advances.promise(value)) return 'promise';
-  if (advances.response(value)) return 'response';
-  if (advances.request(value)) return 'request';
-  if (advances.headers(value)) return 'headers';
-  if (advances.formData(value)) return 'formdata';
-  if (advances.webSocket(value)) return 'websocket';
-  if (advances.object(value)) return 'object'; // must be in the last position
+export const typeOf = (value: unknown): TypeName => {
+  if (checkers.null(value)) return 'null';
+  if (checkers.nan(value)) return 'nan';
+  if (checkers.string(value)) return 'string';
+  if (checkers.boolean(value)) return 'boolean';
+  if (checkers.bigint(value)) return 'bigint';
+  if (checkers.number(value)) return 'number';
+  if (checkers.symbol(value)) return 'symbol';
+  if (checkers.undefined(value)) return 'undefined';
+  if (checkers.thenable(value)) return 'thenable';
+  if (checkers.record(value)) return 'record';
+  if (checkers.array(value)) return 'array';
+  if (checkers.arrayBuffer(value)) return 'arraybuffer';
+  if (checkers.date(value)) return 'date';
+  if (checkers.dataView(value)) return 'dataview';
+  if (checkers.error(value)) return 'error';
+  if (checkers.blob(value)) return 'blob';
+  if (checkers.file(value)) return 'file';
+  if (checkers.function(value)) return 'function';
+  if (checkers.url(value)) return 'url';
+  if (checkers.map(value)) return 'map';
+  if (checkers.set(value)) return 'set';
+  if (checkers.regExp(value)) return 'regexp';
+  if (checkers.promise(value)) return 'promise';
+  if (checkers.response(value)) return 'response';
+  if (checkers.request(value)) return 'request';
+  if (checkers.headers(value)) return 'headers';
+  if (checkers.formData(value)) return 'formdata';
+  if (checkers.webSocket(value)) return 'websocket';
+  if (checkers.object(value)) return 'object'; // must be in the last position
 
   return 'object';
 };

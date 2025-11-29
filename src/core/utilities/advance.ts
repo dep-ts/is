@@ -1,10 +1,11 @@
 import * as advances from '@/core/advances/mod.ts';
+import { Advance } from './types.ts';
 
 /**
  * Type guard that checks whether a value matches any advanced JavaScript type.
  *
  * Includes: arrays, ArrayBuffer, Date, URL, Error, DataView, functions,
- * objects, records, promises, RegExp, Response, Request, Headers,
+ * objects, records, promises, thenable, RegExp, Response, Request, Headers,
  * FormData, WebSocket, Blob, File, Map, and Set.
  *
  * @param value - The value to check
@@ -15,29 +16,7 @@ import * as advances from '@/core/advances/mod.ts';
  *     console.log(x);
  *   }
  */
-export const advance = (
-  value: unknown
-): value is
-  | object
-  | RegExp
-  | Array<unknown>
-  | ArrayBuffer
-  | Date
-  | URL
-  | Error
-  | DataView<ArrayBufferLike>
-  | ((...args: unknown[]) => unknown)
-  | Record<string, unknown>
-  | Promise<unknown>
-  | Response
-  | Request
-  | Headers
-  | FormData
-  | File
-  | Blob
-  | WebSocket
-  | Map<unknown, unknown>
-  | Set<unknown> =>
+export const advance = (value: unknown): value is Advance =>
   advances.array(value) ||
   advances.arrayBuffer(value) ||
   advances.date(value) ||
@@ -45,7 +24,7 @@ export const advance = (
   advances.error(value) ||
   advances.dataView(value) ||
   advances.function(value) ||
-  advances.object(value) ||
+  advances.thenable(value) ||
   advances.record(value) ||
   advances.promise(value) ||
   advances.regExp(value) ||
@@ -57,4 +36,5 @@ export const advance = (
   advances.blob(value) ||
   advances.file(value) ||
   advances.map(value) ||
-  advances.set(value);
+  advances.set(value) ||
+  advances.object(value);

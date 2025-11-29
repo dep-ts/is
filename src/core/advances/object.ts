@@ -1,3 +1,5 @@
+import { TypeOf } from '@/core/utilities/types.ts';
+
 /**
  * Type guard that checks if a value is a plain object (created with `{}` or `new Object()`).
  *
@@ -11,5 +13,5 @@
  *     console.log(Object.keys(maybe));
  *   }
  */
-export const object = (value: unknown): value is object =>
+export const object = (value: unknown): value is TypeOf<'object'> =>
   Object.prototype.toString.call(value) === '[object Object]';

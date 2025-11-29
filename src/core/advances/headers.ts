@@ -1,3 +1,5 @@
+import { TypeOf } from '@/core/utilities/types.ts';
+
 /**
  * Type guard that checks if a value is an instance of `Headers`.
  *
@@ -11,5 +13,5 @@
  *     console.log(maybe.get('content-type'));
  *   }
  */
-export const headers = (value: unknown): value is Headers =>
+export const headers = (value: unknown): value is TypeOf<'headers'> =>
   value instanceof Headers;

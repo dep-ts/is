@@ -1,3 +1,5 @@
+import { TypeOf } from '@/core/utilities/types.ts';
+
 /**
  * Type guard that checks whether a value is a `RegExp` instance.
  *
@@ -9,5 +11,5 @@
  *     pattern.test("hello");
  *   }
  */
-export const regExp = (value: unknown): value is RegExp =>
+export const regExp = (value: unknown): value is TypeOf<'regexp'> =>
   value instanceof RegExp;

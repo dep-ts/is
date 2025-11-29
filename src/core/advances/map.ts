@@ -1,3 +1,5 @@
+import { TypeOf } from '@/core/utilities/types.ts';
+
 /**
  * Type guard that checks if a value is an instance of `Map`.
  *
@@ -9,5 +11,5 @@
  *     console.log(maybe.size);
  *   }
  */
-export const map = (value: unknown): value is Map<unknown, unknown> =>
+export const map = (value: unknown): value is TypeOf<'map'> =>
   value instanceof Map;

@@ -1,3 +1,5 @@
+import { TypeOf } from '@/core/utilities/types.ts';
+
 /**
  * Type guard that checks if a value is a primitive `bigint`.
  *
@@ -9,5 +11,5 @@
  *     console.log(maybe + 10n);
  *   }
  */
-export const bigint = (value: unknown): value is bigint =>
+export const bigint = (value: unknown): value is TypeOf<'bigint'> =>
   typeof value === 'bigint';

@@ -1,3 +1,4 @@
+import { TypeOf } from '@/core/utilities/types.ts';
 import { thenable } from './thenable.ts';
 
 /**
@@ -16,5 +17,5 @@ import { thenable } from './thenable.ts';
  */
 export const promiseLike = (
   value: unknown
-): value is PromiseLike<unknown> | Promise<unknown> =>
+): value is TypeOf<'promise' | 'thenable'> =>
   value instanceof Promise || thenable(value);

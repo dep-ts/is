@@ -1,3 +1,5 @@
+import { TypeOf } from '@/core/utilities/types.ts';
+
 /**
  * Type guard that checks if a value is an instance of `FormData`.
  *
@@ -11,5 +13,5 @@
  *     }
  *   }
  */
-export const formData = (value: unknown): value is FormData =>
+export const formData = (value: unknown): value is TypeOf<'formdata'> =>
   value instanceof FormData;

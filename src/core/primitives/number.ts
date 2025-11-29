@@ -1,3 +1,5 @@
+import { TypeOf } from '@/core/utilities/types.ts';
+
 /**
  * Type guard that checks if a value is a value is a finite number (excludes `NaN` and `±Infinity`).
  *
@@ -11,5 +13,5 @@
  *     console.log(maybe + 10); // no risk of NaN or Infinity
  *   }
  */
-export const number = (value: unknown): value is number =>
+export const number = (value: unknown): value is TypeOf<'number'> =>
   typeof value === 'number' && Number.isFinite(value);

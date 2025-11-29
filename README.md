@@ -84,7 +84,7 @@ console.log(is.promise(Promise.resolve())); // true
 console.log(is.promiseLike(Promise.resolve())); // true
 console.log(is.thenable({ then: () => {} })); // true
 console.log(is.regExp(/x/)); // true
-console.log(is.request(new Request('/'))); // true
+console.log(is.request(new Request('htts://estarlincito.com'))); // true
 console.log(is.response(new Response())); // true
 console.log(is.set(new Set())); // true
 console.log(is.url(new URL('https://example.com'))); // true
@@ -102,8 +102,11 @@ console.log(is.primitive([])); // false
 console.log(is.advance([])); // true
 console.log(is.advance('hola')); // false
 
+console.log(oneOf(12, 'number', 'string', 'bigint')); // true
+console.log(oneOf(false, 'number', 'string', 'bigint')); // false
+
 console.log(is.typeOf(42)); // 'number'
-console.log(is.typeOf(NaN)); // 'NaN'
+console.log(is.typeOf(NaN)); // 'nan'
 console.log(is.typeOf(new Map())); // 'map'
 console.log(is.typeOf(undefined)); // 'undefined'
 ```

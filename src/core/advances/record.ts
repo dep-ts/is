@@ -1,3 +1,4 @@
+import { TypeOf } from '@/core/utilities/types.ts';
 import { object } from './object.ts';
 
 /**
@@ -12,7 +13,7 @@ import { object } from './object.ts';
  *     maybe.someProp; // TypeScript knows it's a record
  *   }
  */
-export const record = (value: unknown): value is Record<string, unknown> => {
+export const record = (value: unknown): value is TypeOf<'record'> => {
   if (!object(value)) return false;
   return value?.constructor === Object;
 };

@@ -1,3 +1,5 @@
+import { TypeOf } from '@/core/utilities/types.ts';
+
 /**
  * Type guard that checks if a value is an instance of `Date`.
  *
@@ -11,4 +13,5 @@
  *     console.log(maybe.toISOString());
  *   }
  */
-export const date = (value: unknown): value is Date => value instanceof Date;
+export const date = (value: unknown): value is TypeOf<'date'> =>
+  value instanceof Date;

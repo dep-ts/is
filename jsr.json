@@ -1,6 +1,6 @@
 {
   "name": "@dep/is",
-  "version": "2.0.1",
+  "version": "2.0.5",
   "description": "A lightweight runtime type guard library for JavaScript & TypeScript",
   "exports": "./src/main.ts",
   "author": {

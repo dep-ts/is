@@ -1,3 +1,5 @@
+import { TypeOf } from '@/core/utilities/types.ts';
+
 /**
  * Type guard that checks whether a value is a `URL` instance.
  *
@@ -9,4 +11,5 @@
  *     console.log(input.hostname);
  *   }
  */
-export const url = (value: unknown): value is URL => value instanceof URL;
+export const url = (value: unknown): value is TypeOf<'url'> =>
+  value instanceof URL;

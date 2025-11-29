@@ -1,4 +1,5 @@
 import * as primitives from '@/core/primitives/mod.ts';
+import { Primtive } from './types.ts';
 
 /**
  * Type guard that checks whether a value is a JavaScript primitive.
@@ -13,9 +14,7 @@ import * as primitives from '@/core/primitives/mod.ts';
  *     console.log(x);
  *   }
  */
-export const primitive = (
-  value: unknown
-): value is string | number | bigint | boolean | symbol | null | undefined =>
+export const primitive = (value: unknown): value is Primtive =>
   primitives.string(value) ||
   primitives.number(value) ||
   primitives.boolean(value) ||

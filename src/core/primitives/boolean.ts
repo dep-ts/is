@@ -1,4 +1,4 @@
-import { TypeOf } from '@/core/utilities/types.ts';
+import { TypeOf } from "@/core/utilities/types.ts";
 
 /**
  * Type guard that checks if a value is a primitive `boolean`.
@@ -11,5 +11,5 @@ import { TypeOf } from '@/core/utilities/types.ts';
  *     console.log(maybe ? 'yes' : 'no');
  *   }
  */
-export const boolean = (value: unknown): value is TypeOf<'boolean'> =>
-  typeof value === 'boolean';
+export const boolean = (value: unknown): value is TypeOf<"boolean"> =>
+  typeof value === "boolean";

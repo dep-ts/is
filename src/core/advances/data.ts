@@ -1,4 +1,4 @@
-import { TypeOf } from '@/core/utilities/types.ts';
+import { TypeOf } from "@/core/utilities/types.ts";
 
 /**
  * Type guard that checks if a value is an instance of `DataView`.
@@ -11,5 +11,5 @@ import { TypeOf } from '@/core/utilities/types.ts';
  *     console.log(maybe.getUint8(0));
  *   }
  */
-export const dataView = (value: unknown): value is TypeOf<'dataview'> =>
+export const dataView = (value: unknown): value is TypeOf<"dataview"> =>
   value instanceof DataView;

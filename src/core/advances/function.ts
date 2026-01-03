@@ -1,4 +1,4 @@
-import { TypeOf } from '@/core/utilities/types.ts';
+import { TypeOf } from "@/core/utilities/types.ts";
 
 /**
  * Type guard that checks if a value is a function.
@@ -11,7 +11,7 @@ import { TypeOf } from '@/core/utilities/types.ts';
  *     maybe(); // safe to call
  *   }
  */
-const function_ = (value: unknown): value is TypeOf<'function'> =>
-  typeof value === 'function';
+const function_ = (value: unknown): value is TypeOf<"function"> =>
+  typeof value === "function";
 
 export { function_ as function };

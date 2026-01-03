@@ -1,4 +1,4 @@
-import { TypeOf } from '@/core/utilities/types.ts';
+import { TypeOf } from "@/core/utilities/types.ts";
 
 /**
  * Type guard that checks if a value is a Promise.
@@ -10,5 +10,5 @@ import { TypeOf } from '@/core/utilities/types.ts';
  *     await maybe; // TypeScript knows it's a Promise
  *   }
  */
-export const promise = (value: unknown): value is TypeOf<'promise'> =>
+export const promise = (value: unknown): value is TypeOf<"promise"> =>
   value instanceof Promise;

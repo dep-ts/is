@@ -1,4 +1,4 @@
-import { TypeOf } from '@/core/utilities/types.ts';
+import { TypeOf } from "@/core/utilities/types.ts";
 
 /**
  * Type guard that checks if a value is an array (any array).
@@ -13,5 +13,5 @@ import { TypeOf } from '@/core/utilities/types.ts';
  *     console.log(maybe.length);
  *   }
  */
-export const array = (value: unknown): value is TypeOf<'array'> =>
+export const array = (value: unknown): value is TypeOf<"array"> =>
   Array.isArray(value);

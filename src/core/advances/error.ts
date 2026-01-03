@@ -1,4 +1,4 @@
-import { TypeOf } from '@/core/utilities/types.ts';
+import { TypeOf } from "@/core/utilities/types.ts";
 
 /**
  * Type guard that checks if a value is an instance of `Error`.
@@ -13,5 +13,5 @@ import { TypeOf } from '@/core/utilities/types.ts';
  *     console.error(maybe.message, maybe.stack);
  *   }
  */
-export const error = (value: unknown): value is TypeOf<'error'> =>
+export const error = (value: unknown): value is TypeOf<"error"> =>
   value instanceof Error;

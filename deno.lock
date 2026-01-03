@@ -1,0 +1,16 @@
+{
+  "version": "5",
+  "specifiers": {
+    "jsr:@dep/assert@^1.3.0": "1.3.0"
+  },
+  "jsr": {
+    "@dep/assert@1.3.0": {
+      "integrity": "6561c5b22b95f9a42231b3b52dc9f6507867bb99924e2600b4172d3ce824c379"
+    }
+  },
+  "workspace": {
+    "dependencies": [
+      "jsr:@dep/assert@^1.3.0"
+    ]
+  }
+}

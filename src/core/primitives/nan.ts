@@ -1,4 +1,4 @@
-import { TypeOf } from '@/core/utilities/types.ts';
+import { TypeOf } from "@/core/utilities/types.ts";
 
 /**
  * Type guard that checks if a value is the `NaN` number (not any number).
@@ -14,5 +14,5 @@ import { TypeOf } from '@/core/utilities/types.ts';
  *     console.log('ValueIsNaN(); // safe to handle as NaN
  *   }
  */
-export const nan = (value: unknown): value is TypeOf<'nan'> =>
-  typeof value === 'number' && Number.isNaN(value);
+export const nan = (value: unknown): value is TypeOf<"nan"> =>
+  typeof value === "number" && Number.isNaN(value);

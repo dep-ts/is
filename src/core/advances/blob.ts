@@ -1,4 +1,4 @@
-import { TypeOf } from '@/core/utilities/types.ts';
+import { TypeOf } from "@/core/utilities/types.ts";
 
 /**
  * Type guard that checks if a value is an instance of `Blob`.
@@ -11,5 +11,5 @@ import { TypeOf } from '@/core/utilities/types.ts';
  *     console.log(await maybe.text());
  *   }
  */
-export const blob = (value: unknown): value is TypeOf<'blob'> =>
+export const blob = (value: unknown): value is TypeOf<"blob"> =>
   value instanceof Blob;

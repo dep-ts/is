@@ -1,4 +1,4 @@
-import { TypeOf } from '@/core/utilities/types.ts';
+import { TypeOf } from "@/core/utilities/types.ts";
 
 /**
  * Type guard that checks if a value is a primitive `symbol`.
@@ -11,5 +11,5 @@ import { TypeOf } from '@/core/utilities/types.ts';
  *     console.log(Symbol.keyFor(maybe) ?? 'unregistered');
  *   }
  */
-export const symbol = (value: unknown): value is TypeOf<'symbol'> =>
-  typeof value === 'symbol';
+export const symbol = (value: unknown): value is TypeOf<"symbol"> =>
+  typeof value === "symbol";

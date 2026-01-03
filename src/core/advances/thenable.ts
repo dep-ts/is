@@ -1,6 +1,6 @@
-import { object } from '@/core/advances/object.ts';
-import { function as function_ } from '@/core/advances/function.ts';
-import { TypeOf } from '@/core/utilities/types.ts';
+import { object } from "@/core/advances/object.ts";
+import { function as function_ } from "@/core/advances/function.ts";
+import { TypeOf } from "@/core/utilities/types.ts";
 
 /**
  * Type guard that checks whether a value is a thenable (an object with a callable `then` method).
@@ -13,5 +13,5 @@ import { TypeOf } from '@/core/utilities/types.ts';
  *     maybe.then(console.log);
  *   }
  */
-export const thenable = (value: unknown): value is TypeOf<'thenable'> =>
-  object(value) && 'then' in value && function_(value.then);
+export const thenable = (value: unknown): value is TypeOf<"thenable"> =>
+  object(value) && "then" in value && function_(value.then);

@@ -1,4 +1,4 @@
-import { TypeOf } from '@/core/utilities/types.ts';
+import { TypeOf } from "@/core/utilities/types.ts";
 
 /**
  * Type guard that checks if a value is a primitive `string`.
@@ -11,5 +11,5 @@ import { TypeOf } from '@/core/utilities/types.ts';
  *     console.log(maybe.toUpperCase());
  *   }
  */
-export const string = (value: unknown): value is TypeOf<'string'> =>
-  typeof value === 'string';
+export const string = (value: unknown): value is TypeOf<"string"> =>
+  typeof value === "string";

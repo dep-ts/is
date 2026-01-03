@@ -11,7 +11,7 @@ export type TypeMap = {
   nan: number;
   null: null;
   object: object;
-  record: Record<string, unknown>;
+  record: Record<PropertyKey, unknown>;
   function: (...args: unknown[]) => unknown;
   array: unknown[];
   set: Set<unknown>;
@@ -46,30 +46,30 @@ export type TypeOf<T extends TypeName> = TypeMap[T];
 
 /** JavaScript primitive types */
 export type Primtive = TypeOf<
-  'string' | 'number' | 'boolean' | 'bigint' | 'symbol' | 'undefined' | 'null'
+  "string" | "number" | "boolean" | "bigint" | "symbol" | "undefined" | "null"
 >;
 
 /** All non-primitive (object-like) types supported by the library */
 export type Advance = TypeOf<
-  | 'object'
-  | 'record'
-  | 'function'
-  | 'array'
-  | 'set'
-  | 'map'
-  | 'date'
-  | 'regexp'
-  | 'promise'
-  | 'thenable'
-  | 'error'
-  | 'url'
-  | 'blob'
-  | 'file'
-  | 'arraybuffer'
-  | 'dataview'
-  | 'response'
-  | 'request'
-  | 'headers'
-  | 'formdata'
-  | 'websocket'
+  | "object"
+  | "record"
+  | "function"
+  | "array"
+  | "set"
+  | "map"
+  | "date"
+  | "regexp"
+  | "promise"
+  | "thenable"
+  | "error"
+  | "url"
+  | "blob"
+  | "file"
+  | "arraybuffer"
+  | "dataview"
+  | "response"
+  | "request"
+  | "headers"
+  | "formdata"
+  | "websocket"
 >;

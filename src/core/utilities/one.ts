@@ -1,5 +1,5 @@
-import { TypeName, TypeOf } from './types.ts';
-import * as checkers from './checkers.ts';
+import { TypeName, TypeOf } from "./types.ts";
+import * as checkers from "./checkers.ts";
 
 /**
  * Returns `true` if the value matches **any** of the specified types.
@@ -19,11 +19,11 @@ export const oneOf = <T extends TypeName[]>(
   ...types: T
 ): value is TypeOf<T[number]> => {
   const map = {
-    regexp: 'regExp',
-    arraybuffer: 'arrayBuffer',
-    dataview: 'dataView',
-    formdata: 'formData',
-    websocket: 'webSocket',
+    regexp: "regExp",
+    arraybuffer: "arrayBuffer",
+    dataview: "dataView",
+    formdata: "formData",
+    websocket: "webSocket",
   } as const;
 
   return types.some((type) => {

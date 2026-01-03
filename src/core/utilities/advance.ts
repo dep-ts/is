@@ -1,5 +1,5 @@
-import * as advances from '@/core/advances/mod.ts';
-import { Advance } from './types.ts';
+import * as advances from "@/core/advances/mod.ts";
+import { Advance } from "./types.ts";
 
 /**
  * Type guard that checks whether a value matches any advanced JavaScript type.

@@ -15,6 +15,5 @@
  *   }
  */
 export const custom =
-  <T>(predicate: (value: unknown) => boolean) =>
-  (value: unknown): value is T =>
+  <T>(predicate: (value: unknown) => boolean) => (value: unknown): value is T =>
     predicate(value);

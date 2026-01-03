@@ -1,5 +1,5 @@
-import * as primitives from '@/core/primitives/mod.ts';
-import { Primtive } from './types.ts';
+import * as primitives from "@/core/primitives/mod.ts";
+import { Primtive } from "./types.ts";
 
 /**
  * Type guard that checks whether a value is a JavaScript primitive.

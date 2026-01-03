@@ -1,4 +1,4 @@
-import { TypeOf } from '@/core/utilities/types.ts';
+import { TypeOf } from "@/core/utilities/types.ts";
 
 /**
  * Type guard that checks whether a value is a `Request` instance.
@@ -11,5 +11,5 @@ import { TypeOf } from '@/core/utilities/types.ts';
  *     console.log(input.url);
  *   }
  */
-export const request = (value: unknown): value is TypeOf<'request'> =>
+export const request = (value: unknown): value is TypeOf<"request"> =>
   value instanceof Request;

@@ -1,2 +1,2 @@
-export * from '@/core/primitives/mod.ts';
-export * from '@/core/advances/mod.ts';
+export * from "@/core/primitives/mod.ts";
+export * from "@/core/advances/mod.ts";

@@ -1,4 +1,4 @@
-import { TypeOf } from '@/core/utilities/types.ts';
+import { TypeOf } from "@/core/utilities/types.ts";
 
 /**
  * Type guard that checks if a value is an instance of `File`.
@@ -11,5 +11,5 @@ import { TypeOf } from '@/core/utilities/types.ts';
  *     console.log(maybe.name, maybe.size, maybe.type);
  *   }
  */
-export const file = (value: unknown): value is TypeOf<'file'> =>
+export const file = (value: unknown): value is TypeOf<"file"> =>
   value instanceof File;

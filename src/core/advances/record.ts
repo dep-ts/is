@@ -1,5 +1,5 @@
-import { TypeOf } from '@/core/utilities/types.ts';
-import { object } from './object.ts';
+import { TypeOf } from "@/core/utilities/types.ts";
+import { object } from "./object.ts";
 
 /**
  * Type guard that checks if a value is a plain record/object literal (`{}` or `new Object()`).
@@ -13,7 +13,8 @@ import { object } from './object.ts';
  *     maybe.someProp; // TypeScript knows it's a record
  *   }
  */
-export const record = (value: unknown): value is TypeOf<'record'> => {
+export const record = (value: unknown): value is TypeOf<"record"> => {
   if (!object(value)) return false;
-  return value?.constructor === Object;
+  const proto = Object.getPrototypeOf(value);
+  return proto === null || proto === Object.prototype;
 };

@@ -1,4 +1,4 @@
-import { TypeOf } from '@/core/utilities/types.ts';
+import { TypeOf } from "@/core/utilities/types.ts";
 
 /**
  * Type guard that checks if a value is exactly `null`.
@@ -11,6 +11,6 @@ import { TypeOf } from '@/core/utilities/types.ts';
  *     console.log('Received null');
  *   }
  */
-const _null = (value: unknown): value is TypeOf<'null'> => value === null;
+const _null = (value: unknown): value is TypeOf<"null"> => value === null;
 
 export { _null as null };
